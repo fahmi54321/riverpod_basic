@@ -5,12 +5,14 @@ import 'package:provider/pages/auto_dispose_family/auto_dispose_family_provider.
 class AutoDisposeFamilyPage extends ConsumerWidget {
   const AutoDisposeFamilyPage({super.key});
 
-// todo 4 implement provider family dengan autoDispose (finish)
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final helloFahmi = ref.watch(autoDisposeFamilyHelloProvider('Fahmi'));
     final helloAbdul = ref.watch(autoDisposeFamilyHelloProvider('Abdul'));
+
+    // todo 3 implement count provider (finish)
+    ref.watch(counterProvider(Counter(count: 0)));
+    ref.watch(counterProvider(Counter(count: 0)));
     return Scaffold(
       appBar: AppBar(
         title: const Text('AutoDisposeFamilyProvider'),
