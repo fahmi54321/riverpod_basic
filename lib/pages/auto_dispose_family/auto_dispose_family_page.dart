@@ -1,16 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:provider/pages/auto_dispose_family/auto_dispose_family_provider.dart';
 
-class AutoDisposeFamilyPage extends StatelessWidget {
+class AutoDisposeFamilyPage extends ConsumerWidget {
   const AutoDisposeFamilyPage({super.key});
 
+// todo 4 implement provider family dengan autoDispose (finish)
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final helloFahmi = ref.watch(autoDisposeFamilyHelloProvider('Fahmi'));
+    final helloAbdul = ref.watch(autoDisposeFamilyHelloProvider('Abdul'));
     return Scaffold(
       appBar: AppBar(
         title: const Text('AutoDisposeFamilyProvider'),
       ),
-      body: const Center(
-        child: Text('AutoDisposeFamilyProvider'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Hello $helloFahmi',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            const SizedBox(height: 10.0),
+            Text(
+              'Hello $helloAbdul',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+          ],
+        ),
       ),
     );
   }
