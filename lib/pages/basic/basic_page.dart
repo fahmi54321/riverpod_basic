@@ -7,7 +7,6 @@ class BasicPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // todo 7 watch provider (finish)
     final value = ref.watch(ageProvider);
 
     return Scaffold(
