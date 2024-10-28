@@ -3,8 +3,10 @@ import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart'; // todo 29 import riverpod_annotation
 
-// todo 1 buat model Counter
+// todo 30 buat part dengan mengetik 'riverpodPart' jika extensi riverpod diaktifkan
+part 'auto_dispose_family_provider.g.dart';
 
 class Counter extends Equatable {
   final int count;
@@ -19,19 +21,45 @@ class Counter extends Equatable {
   List<Object> get props => [count];
 }
 
-// todo 2 buat objek count provider (next auto_dispose_family_page.dart)
-final counterProvider = Provider.autoDispose.family<int, Counter>(
-  (ref, c) {
-    ref.onDispose(() {
-      log('counterProvider($c) disposed');
-    });
-    return c.count;
-  },
-);
-final autoDisposeFamilyHelloProvider =
-    Provider.autoDispose.family<String, String>((ref, name) {
+// todo 31 comment code sebelumnya
+
+// final counterProvider = Provider.autoDispose.family<int, Counter>(
+//   (ref, c) {
+//     ref.onDispose(() {
+//       log('counterProvider($c) disposed');
+//     });
+//     return c.count;
+//   },
+// );
+// final autoDisposeFamilyHelloProvider =
+//     Provider.autoDispose.family<String, String>((ref, name) {
+//   ref.onDispose(() {
+//     log('autoDisposeFamilyHelloProvider($name) disposed');
+//   });
+//   return 'Hello $name';
+// });
+
+// todo 32 buat riverpod objek counter dan autoDisposeFamilyHello dengan mengetik 'riverpod' lalu pilih yang riverpod
+// @riverpod = Riverpod({bool keepALive = false, List<Object> ? dependencies})
+// keepALive = false berarti autoDispose = true
+// note = penamaan kalau bisa tidak ada provider dibelakangnya
+//        counterProvider = wrong
+//        counter = correct
+
+@riverpod
+int counter(Ref ref, Counter c) {
   ref.onDispose(() {
-    log('autoDisposeFamilyHelloProvider($name) disposed');
+    log('counterProvider($c) disposed');
   });
-  return 'Hello $name';
-});
+  return c.count;
+}
+
+@riverpod
+autoDisposeFamilyHello(Ref ref, String nama) {
+  ref.onDispose(() {
+    log('autoDisposeFamilyHelloProvider($nama) disposed');
+  });
+  return 'Hello $nama';
+}
+
+// todo 33 run app (finish)

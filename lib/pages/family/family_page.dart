@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/pages/family/family_provider.dart';
 
-// todo 2 implement provider family (next auto_dispose_family_provider.dart)
-
 class FamilyPage extends ConsumerWidget {
   const FamilyPage({super.key});
 
   @override
   Widget build(BuildContext context, ref) {
-    final helloFahmi = ref.watch(familyHelloProvider('Fahmi'));
-    final helloAbdul = ref.watch(familyHelloProvider('Abdul'));
+    // todo 26 implement provider
+    final helloFahmi = ref.watch(familyHelloProvider(nama: 'Fahmi'));
+    final helloAbdul = ref.watch(familyHelloProvider(nama: 'Abdul'));
     return Scaffold(
       appBar: AppBar(
         title: const Text('FamilyProvider'),
@@ -34,3 +33,6 @@ class FamilyPage extends ConsumerWidget {
     );
   }
 }
+
+// todo 27 (run app)
+// todo 28 (next auto_dispose_family_provider.dart)
