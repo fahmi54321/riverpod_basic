@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:provider/pages/auto_dispose/auto_dispose_provider.dart';
 
 class AutoDisposePage extends ConsumerWidget {
   const AutoDisposePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // todo 17 implement riverpod, ingat pemanggilannya ada 'Provider' dibelakangnya ==> autoDisposeHelloProvider
-    final hello = ref.watch(autoDisposeHelloProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AutoDisposeProvider'),
+        title: const Text('AutoDisposeStateProvider'),
       ),
-      body: Center(
-        child: Text(
-          '$hello',
-          style: Theme.of(context).textTheme.headlineLarge,
-        ),
+      body: const Center(
+        child: Text('AutoDisposeStateProvider'),
       ),
     );
   }
 }
-
-// todo 18 (run app)
-// todo 19 (next family_provider.dart)

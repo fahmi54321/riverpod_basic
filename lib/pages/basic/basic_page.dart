@@ -2,82 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/pages/basic/basic_provider.dart';
 
-// todo 2 implement provider dengan Consumer, ConsumerWidget, dan ConsumerStatefulWidget (finish)
-
-// class BasicPage extends StatelessWidget {
-//   const BasicPage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Provider'),
-//       ),
-//       body: Center(
-//         child: Consumer(
-//           builder: (context, ref, child) {
-//             final hello = ref.watch(helloProvider);
-//             final world = ref.watch(worldProvider);
-//             return Text(
-//               '$hello $world',
-//               style: Theme.of(context).textTheme.headlineLarge,
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class BasicPage extends ConsumerWidget {
-//   const BasicPage({super.key});
-
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final hello = ref.watch(helloProvider);
-//     final world = ref.watch(worldProvider);
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Provider'),
-//       ),
-//       body: Center(
-//         child: Consumer(
-//           builder: (context, ref, child) {
-//             return Text(
-//               '$hello $world',
-//               style: Theme.of(context).textTheme.headlineLarge,
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-class BasicPage extends ConsumerStatefulWidget {
+class BasicPage extends ConsumerWidget {
   const BasicPage({super.key});
 
   @override
-  ConsumerState<BasicPage> createState() => _BasicPageState();
-}
-
-class _BasicPageState extends ConsumerState<BasicPage> {
-  @override
-  Widget build(BuildContext context) {
-    final hello = ref.watch(helloProvider);
-    final world = ref.watch(worldProvider);
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Provider'),
-      ),
-      body: Center(
-        child: Consumer(
-          builder: (context, ref, child) {
-            return Text(
-              '$hello $world',
-              style: Theme.of(context).textTheme.headlineLarge,
+  Widget build(BuildContext context, WidgetRef ref) {
+    // todo 2 listen provider
+    ref.listen<int>(counterProvider, (previous, next) {
+      if (next == 3) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text('counter : $next'),
             );
           },
+        );
+      }
+    });
+
+    // todo 3 watch provider
+    final value = ref.watch(counterProvider);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('StateProvider'),
+      ),
+      body: Center(
+        child: Text(
+          '$value',
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // todo 4 read provider (finish)
+          ref.read(counterProvider.notifier).state++;
+        },
+        child: const Icon(
+          Icons.add,
         ),
       ),
     );

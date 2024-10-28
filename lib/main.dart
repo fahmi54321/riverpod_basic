@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Provider',
+      title: 'StateProvider',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -39,7 +39,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Provider'),
+        title: const Text('StateProvider'),
       ),
       body: Center(
         child: ListView(
@@ -47,19 +47,19 @@ class MyHomePage extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           children: const [
             CustomButton(
-              title: 'Provider',
+              title: 'StateProvider',
               child: BasicPage(),
             ),
             CustomButton(
-              title: 'AutoDisposeProvider',
+              title: 'AutoDisposeStateProvider',
               child: AutoDisposePage(),
             ),
             CustomButton(
-              title: 'FamilyProvider',
+              title: 'FamilyStateProvider',
               child: FamilyPage(),
             ),
             CustomButton(
-              title: 'AutoDisposeFamilyProvider',
+              title: 'AutoDisposeFamilyStateProvider',
               child: AutoDisposeFamilyPage(),
             ),
           ],
