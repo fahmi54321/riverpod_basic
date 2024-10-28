@@ -7,22 +7,8 @@ class BasicPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // todo 2 listen provider
-    ref.listen<int>(counterProvider, (previous, next) {
-      if (next == 3) {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              content: Text('counter : $next'),
-            );
-          },
-        );
-      }
-    });
-
-    // todo 3 watch provider
-    final value = ref.watch(counterProvider);
+    // todo 7 watch provider (finish)
+    final value = ref.watch(ageProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -36,8 +22,11 @@ class BasicPage extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // todo 4 read provider (finish)
-          ref.read(counterProvider.notifier).state++;
+          // ref.read(counterProvider.notifier).state++;
+
+          // atau
+
+          ref.read(counterProvider.notifier).update((state) => state + 1);
         },
         child: const Icon(
           Icons.add,
