@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'pages/ticker/ticker_page.dart';
-import 'widgets/cutom_button.dart';
+import 'pages/todos_page.dart';
+import 'widgets/custom_button.dart';
 
 void main() {
   runApp(
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Stream Provider',
+      title: 'StateNotfierProvider',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -35,14 +34,17 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('StateNotifierProvider'),
+      ),
       body: Center(
         child: ListView(
           padding: const EdgeInsets.all(20),
           shrinkWrap: true,
           children: const [
             CustomButton(
-              title: 'Ticker',
-              child: TickerPage(),
+              title: 'Todo List',
+              child: TodosPage(),
             ),
           ],
         ),
