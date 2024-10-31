@@ -13,14 +13,11 @@ class UserDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // todo 17 provider watch
     final user = ref.watch(userDetailProvider(userId));
     return Scaffold(
       appBar: AppBar(
         title: const Text('User Detail'),
       ),
-
-      // todo 17 implement future provider (finish)
       body: user.when(
         data: (user) {
           return ListView(
