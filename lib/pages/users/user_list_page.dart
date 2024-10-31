@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:provider/pages/users/user_detail_page.dart';
 import 'package:provider/pages/users/users_providers.dart';
 
 class UserListPage extends ConsumerWidget {
@@ -7,24 +8,36 @@ class UserListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // todo 11 buat provider watch
+    // todo 15 buat provider watch
     final userList = ref.watch(userListProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('User List'),
       ),
 
-      // todo 12 implement future provider (finish)
+      // todo 16 implement future provider (next user_detail_page.dart)
       body: userList.when(
         data: (users) {
           return ListView.separated(
             itemBuilder: (BuildContext context, int index) {
               final user = users[index];
-              return ListTile(
-                leading: CircleAvatar(
-                  child: Text(user.id.toString()),
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => UserDetailPage(
+                        userId: user.id,
+                      ),
+                    ),
+                  );
+                },
+                child: ListTile(
+                  leading: CircleAvatar(
+                    child: Text(user.id.toString()),
+                  ),
+                  title: Text(user.name),
                 ),
-                title: Text(user.name),
               );
             },
             separatorBuilder: (BuildContext context, int index) {
