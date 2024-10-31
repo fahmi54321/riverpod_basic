@@ -25,27 +25,7 @@ FutureOr<User> userDetail(Ref ref, int id) async {
     log('userDetailProvider disposed');
   });
 
-  // todo 1 (tarok keepAlive dibawah dioProvider)
   final response = await ref.watch(dioProvider).get('/users/$id');
-  ref.keepAlive();
-  // todo 2 (run projek, lakukan case dibawah ini)
-  /**
-   * - buka hal detail dengan ada koneksi berkali2, maka hal detail tsb akan ngecache
-   * - hal detail yg sudah ngecache, buka dengan tanpa koneksi dan sambil buka hal detail dengan belum ngecache, pasti ada perbedaan
-   * - coba atur koneksi paling lambat, ketika buka hal detail dan tiba2 back halaman, maka hal detail tsb akan dispose
-   */
-
-  // todo 3 (tarok keepAlive diatas dioProvider)
-  // ref.keepAlive();
-  // final response = await ref.watch(dioProvider).get('/users/$id');
-  // todo 4 (run projek, lakukan case dibawah ini)
-  /**
-   * - buka hal detail dengan ada koneksi berkali2, maka hal detail tsb akan ngecache
-   * - hal detail yg sudah ngecache, buka dengan tanpa koneksi dan sambil buka hal detail dengan belum ngecache, pasti ada perbedaan
-   * - coba atur koneksi paling lambat, ketika buka hal detail dan tiba2 back halaman, maka hal detail tsb tidak dispose, jadi hal tsb tetap nge hit api detail
-   */
-
-  // todo 5 (finish)
 
   final user = User.fromJson(response.data);
 

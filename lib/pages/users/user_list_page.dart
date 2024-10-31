@@ -8,42 +8,44 @@ class UserListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // todo 15 buat provider watch
     final userList = ref.watch(userListProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('User List'),
       ),
-
-      // todo 16 implement future provider (next user_detail_page.dart)
       body: userList.when(
+        skipLoadingOnRefresh: false, // todo 1
         data: (users) {
-          return ListView.separated(
-            itemBuilder: (BuildContext context, int index) {
-              final user = users[index];
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => UserDetailPage(
-                        userId: user.id,
+          return RefreshIndicator(
+            onRefresh: () async =>
+                ref.invalidate(userListProvider), // todo 2 (finish)
+            child: ListView.separated(
+              itemBuilder: (BuildContext context, int index) {
+                final user = users[index];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => UserDetailPage(
+                          userId: user.id,
+                        ),
                       ),
+                    );
+                  },
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      child: Text(user.id.toString()),
                     ),
-                  );
-                },
-                child: ListTile(
-                  leading: CircleAvatar(
-                    child: Text(user.id.toString()),
+                    title: Text(user.name),
                   ),
-                  title: Text(user.name),
-                ),
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return const Divider();
-            },
-            itemCount: users.length,
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return const Divider();
+              },
+              itemCount: users.length,
+            ),
           );
         },
         error: (e, st) {
