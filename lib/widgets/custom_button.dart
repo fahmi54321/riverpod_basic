@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
-    Key? key,
+    super.key,
     required this.title,
     required this.child,
-  }) : super(key: key);
+  });
   final String title;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       child: FilledButton(
         onPressed: () {
           Navigator.of(context).push(

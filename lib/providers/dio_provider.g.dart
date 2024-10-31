@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auto_dispose_provider.dart';
+part of 'dio_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$autoDisposeAgeHash() => r'2d493f2597619bcddc8f7df9ee7a775a247cfb2f';
+String _$dioHash() => r'256a4cfe6c613cfa96a3598439404f8830191b6e';
 
-/// See also [autoDisposeAge].
-@ProviderFor(autoDisposeAge)
-final autoDisposeAgeProvider = AutoDisposeProvider<String>.internal(
-  autoDisposeAge,
-  name: r'autoDisposeAgeProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$autoDisposeAgeHash,
+/// See also [dio].
+@ProviderFor(dio)
+final dioProvider = AutoDisposeProvider<Dio>.internal(
+  dio,
+  name: r'dioProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$dioHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef AutoDisposeAgeRef = AutoDisposeProviderRef<String>;
+typedef DioRef = AutoDisposeProviderRef<Dio>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
