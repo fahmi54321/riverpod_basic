@@ -17,8 +17,9 @@ class UserListPage extends ConsumerWidget {
         skipLoadingOnRefresh: false, // todo 1
         data: (users) {
           return RefreshIndicator(
-            onRefresh: () async =>
-                ref.invalidate(userListProvider), // todo 2 (finish)
+            // onRefresh: () async =>
+            //     ref.invalidate(userListProvider), // todo 2 (next family_dispose_page.dart)
+            onRefresh: () async => ref.refresh(userListProvider),
             child: ListView.separated(
               itemBuilder: (BuildContext context, int index) {
                 final user = users[index];
