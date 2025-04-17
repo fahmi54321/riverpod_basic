@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/pages/todos_provider.dart';
 
-// todo 7 implement todo provider (finish)
-
 class TodosPage extends ConsumerWidget {
   const TodosPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final todos = ref.watch(todosProvider);
+    // todo 4 (finish)
+    final todos = ref.watch(todosProvider).todos;
 
     return Scaffold(
       appBar: AppBar(
