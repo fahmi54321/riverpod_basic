@@ -7,7 +7,7 @@ class CounterPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final counter = ref.watch(counterProvider);
+    final counter = ref.watch(counterNotifierProvider(10));
     return Scaffold(
       appBar: AppBar(
         title: const Text('Counter'),
@@ -23,7 +23,7 @@ class CounterPage extends ConsumerWidget {
             const SizedBox(height: 20.0),
             OutlinedButton(
                 onPressed: () {
-                  ref.read(counterProvider.notifier).increment();
+                  ref.read(counterNotifierProvider(10).notifier).increment();
                 },
                 child: Text(
                   'Increment',
