@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// todo 1 (next counter_provider.dart)
-class CounterNotifier extends Notifier<int> {
+// todo 1 (finish)
+class CounterNotifier extends AutoDisposeNotifier<int> {
   @override
   int build() {
     ref.onDispose(() {
@@ -15,6 +15,6 @@ class CounterNotifier extends Notifier<int> {
   }
 }
 
-final counterProvider = NotifierProvider<CounterNotifier, int>(() {
+final counterProvider = NotifierProvider.autoDispose<CounterNotifier, int>(() {
   return CounterNotifier();
 });
