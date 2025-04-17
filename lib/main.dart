@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'pages/todos_page.dart';
+
+import 'pages/counter/counter_page.dart';
 import 'widgets/custom_button.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ChangeNotifierProvider',
+      title: 'NotifierProvider',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -35,7 +36,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ChangeNotifierProvider'),
+        title: const Text('NotifierProvider'),
       ),
       body: Center(
         child: ListView(
@@ -43,8 +44,8 @@ class MyHomePage extends StatelessWidget {
           shrinkWrap: true,
           children: const [
             CustomButton(
-              title: 'Todo List',
-              child: TodosPage(),
+              title: 'Counter',
+              child: CounterPage(),
             ),
           ],
         ),
